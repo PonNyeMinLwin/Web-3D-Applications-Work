@@ -211,7 +211,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
 
 .dropdown-menu
 .dropdown-item {
-    color: #f1ee08;
+    color: #f10808;
 }
 
 .dropdown-menu
@@ -522,7 +522,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     .navbar-text > p {
-        color: rgb(12, 5, 3);
+        color: rgb(174, 52, 18);
         font-size: 23px;
     }
 
