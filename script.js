@@ -42,13 +42,14 @@ function init() {
     mode = 'open';
     const btn = document.getElementById("btn");
     btn.addEventListener('click', function() {
-        if (actions.length == 2) {
-            if (mode == "open") {
+        if (actions.length === 2) {
+            if (mode === "open") {
                 actions.forEach(action => {
-                    action.timeScale = 1.;
+                    action.timeScale = 1;
                     action.reset();
                     action.play();
                 });
+                mode = "close";
             }
         }
     });
@@ -57,6 +58,7 @@ function init() {
     const loader = new THREE.GLTFLoader();
     loader.load(assetPath + 'assets/soda_can_opening.glb', function(gltf) {
         const model = gltf.scene;
+        model.position.set(0, 0, 0); // Adjust position to ensure visibility
         scene.add(model);
 
         mixer = new THREE.AnimationMixer(model);
@@ -72,13 +74,13 @@ function init() {
     window.addEventListener('resize', onResize, false);
 
     animate();
-    
-    function animate() {
-        requestAnimationFrame(animate);
-    
-        if (mixer) {
-            mixer.update(clock.getDelta());
-        }
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    if (mixer) {
+        mixer.update(clock.getDelta());
     }
     renderer.render(scene, camera);
 }
@@ -86,6 +88,6 @@ function init() {
 function onResize() {
     // When the resize button event is interacted with
     camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMaterial();
+    camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
