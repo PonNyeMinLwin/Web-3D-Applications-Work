@@ -82,8 +82,44 @@
 
   <br>
 
-  <button id="btn">
-    Open can </button>
+<div class ="container-fluid main-contents">
+  <div class="row">
+    <div class="col-sm-10">
+      <div class="card" style="position: relative;">
+        <div class="card-header">
+          <h1>Let's Drink!</h1>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <canvas id="threeContainer"></canvas>
+          </div>
+        </div>
+      </div>
+      <button id="btn">Open Can</button>
+      <button id="toggleWireframe">Toggle Wireframe</button> 
+      <button id="Rotate">Rotate Can</button> 
+      <button id="switchModel">Switch Can</button>  
+      <button id="playSecondModelAnimation">Recycle Can</button> 
+    </div>
+  </div>
+</div>
+
+<div id="threeContainer"></div>
+
+<script>
+  function updateContainerSize() {
+    var container = document.getElementById('threeContainer');
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    container.width = width;
+    container.height = height;
+  }
+
+  window.addEventListener('load', updateContainerSize);
+  window.addEventListener('resize', updateContainerSize);
+  
+</script>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/106/three.min.js'></script>
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/2666677/OrbitControls.js'></script>

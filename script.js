@@ -19,11 +19,6 @@ function init() {
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(-5, 25, 20);
 
-    // Renderer 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
     // Directional Light
     const light = new THREE.DirectionalLight(0xFFFFFF);
     light.position.set(0, 10, 2);
@@ -32,6 +27,12 @@ function init() {
     // Ambient Light
     const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
     scene.add(ambient);
+
+    // Renderer 
+    const canvas = document.getElementById('threeContainer');
+    renderer = new THREE.WebGLRenderer({canvas: canvas});
+    renderer.setPixelRatio(window.devicePixelRatio);
+    resize();
 
     // Orbit Controls
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -49,14 +50,13 @@ function init() {
                     action.reset();
                     action.play();
                 });
-                mode = "close";
             }
         }
     });
 
-    //GLFT Loader 
+    //GLTF Loader 
     const loader = new THREE.GLTFLoader();
-    loader.load(assetPath + 'assets/soda_can_opening.glb', function(gltf) {
+    loader.load(assetPath + 'assets/models/CocaCola Bottle.glb', function(gltf) {
         const model = gltf.scene;
         model.position.set(0, 0, 0); // Adjust position to ensure visibility
         scene.add(model);
@@ -71,7 +71,7 @@ function init() {
     });
 
     // Resize button event listener 
-    window.addEventListener('resize', onResize, false);
+    window.addEventListener('resize', resize, false);
 
     animate();
 }
@@ -85,9 +85,13 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-function onResize() {
+function resize() {
+    const canvas = document.getElementById('threeContainer');
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
     // When the resize button event is interacted with
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height);
 }
