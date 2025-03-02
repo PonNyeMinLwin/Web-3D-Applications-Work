@@ -1,6 +1,7 @@
 // Global variables that can be controlled 
 var scene, camera, renderer, box, clock, mixer, actions = [], mode, isWireframe = false;
 let loadedModel;
+let secondModelMixer, secondModelActions = [];
 
 // Initializing 
 init();
@@ -74,22 +75,55 @@ function init() {
         }
     });
 
+    // Recycle Can Button
+    const playSecondModelAnimationBtn = document.getElementById("playSecondModelAnimation");
+    playSecondModelAnimationBtn.addEventListener('click', function() {
+        if (secondModelActions.length > 0) {
+            secondModelActions.forEach(action => {
+                action.reset();
+                action.setLoop(THREE.LoopOnce);
+                action.clampWhenFinished = true;
+                action.play();
+            });
+        } else {
+            console.warn('No animations are available for the second model');
+        }
+    });
+
     //Load the GLTF model
     const loader = new THREE.GLTFLoader();
-    loader.load(assetPath + 'assets/models/CocaCola Bottle.glb', function(gltf) {
-        const model = gltf.scene;
-        model.position.set(0, 0, 0); // Adjust position to ensure visibility
-        scene.add(model);
 
-        loadedModel = model;
+    function loadModel(modelPath) {
+        if (loadedModel) {
+            scene.remove(loadedModel);
+        }
 
-        mixer = new THREE.AnimationMixer(model);
-        const animations = gltf.animations;
+        loader.load(modelPath, function(gltf) {
+            const model = gltf.scene;
 
-        animations.forEach(clip => {
-            const action = mixer.clipAction(clip);
-            actions.push(action);
+            model.position.set(0, 0, 0);
+            scene.add(model);
+            loadedModel = model;
+
+            mixer = new THREE.AnimationMixer(model);
+            const animations = gltf.animations;
+            action = [];
+
+            animations.forEach(clip => {
+                const action = mixer.clipAction(clip);
+                actions.push(action);
+            });
+
+            if(modelPath === 'assets/models/Recycled Cola Bottle.glb') {
+                secondModelMixer = mixer;
+                secondModelActions = actions;
+            }
         });
+    }
+    loadModel('assets/models/CocaCola Bottle.glb')
+    const switchBtn = document.getElementById("switchModel");
+    switchBtn.addEventListener('click', function() {
+        loadModel('assets/models/Recycled Cola Bottle.glb');
     });
 
     // Resize button event listener 
@@ -113,6 +147,9 @@ function animate() {
 
     if (mixer) {
         mixer.update(clock.getDelta());
+        if (secondModelMixer) {
+            secondModelMixer.update(clock.getDelta());
+        }
     }
     renderer.render(scene, camera);
 }
