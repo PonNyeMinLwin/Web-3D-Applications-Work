@@ -1,7 +1,8 @@
 // Global variables that can be controlled 
-var scene, camera, renderer, box, clock, mixer, actions = [], mode, isWireframe = false;
+var scene, camera, renderer, box, clock, mixer, actions = [], mode, isWireframe = false, params, lights;
 let loadedModel;
 let secondModelMixer, secondModelActions = [];
+let sound, secondSound;
 
 // Initializing 
 init();
@@ -21,14 +22,70 @@ function init() {
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(-5, 25, 20);
 
-    // Directional Light
-    const light = new THREE.DirectionalLight(0xFFFFFF);
-    light.position.set(0, 10, 2);
-    scene.add(light);
+    // Listener 
+    const listener = new THREE.AudioListener();
+    camera.add(listener);
+
+    // Sound Effects
+    sound = new THREE.Audio(listener);
+    secondSound = new THREE.Audio(listener);
+
+    // Can opening sound effect loader
+    const audioLoader = new THREE.AudioLoader();
+    audioLoader.load('assets/sound/Can_Open_Sound_FX.mp3', function(buffer) {
+        sound.setBuffer(buffer);
+        sound.setLoop(false);
+        sound.setVolume(1.0);
+    });
+
+    // Can recycling sound effect loader
+    audioLoader.load('assets/sound/Can_Recycle_FX.mp3', function(buffer) {
+        secondSound.setBuffer(buffer);
+        secondSound.setLoop(false);
+        secondSound.setVolume(2.0);
+    });
 
     // Ambient Light
     const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
     scene.add(ambient);
+
+    // Spot Light and Scene Lights GUI
+    lights = {};
+    lights.spot = new THREE.SpotLight();
+    lights.spot.visible = true;
+    lights.spot.position.set(0,20,0);
+    lights.spotHelper = new THREE.SpotLightHelper(lights.spot);
+    lights.spotHelper.visible = false;
+    scene.add(lights.spotHelper);
+    scene.add(lights.spot);
+    
+    params = {
+        spot: {
+            enable: false,
+            color: 0xffffff,
+            distance: 20,
+            angle: Math.PI/2,
+            penumbra: 0,
+            helper: false,
+            moving: false
+        }
+    }
+    
+    const gui = new dat.GUI({ autoPlace: false });
+    const guiContainer = document.getElementById('gui-container');
+    guiContainer.appendChild(gui.domElement);
+
+    guiContainer.style.position = 'fixed';
+    
+    const spot = gui.addFolder('Spot');
+    spot.open();
+    spot.add(params.spot, 'enable').onChange(value => { lights.spot.visible = value });
+    spot.addColor(params.spot, 'color').onChange(value => lights.spot.color = new THREE.Color(value));
+    spot.add(params.spot,'distance').min(0).max(20).onChange( value => lights.spot.distance = value);
+    spot.add(params.spot,'angle').min(0.1).max(6.28).onChange( value => lights.spot.angle = value );
+    spot.add(params.spot,'penumbra').min(0).max(1).onChange( value => lights.spot.penumbra = value );
+    spot.add(params.spot, 'helper').onChange(value => lights.spotHelper.visible = value);
+    spot.add(params.spot, 'moving');
 
     // Renderer 
     const canvas = document.getElementById('threeContainer');
@@ -50,7 +107,14 @@ function init() {
                 actions.forEach(action => {
                     action.timeScale = 1;
                     action.reset();
+                    action.setLoop(THREE.LoopOnce);
+                    action.clampWhenFinished = true;
                     action.play();
+                    
+                    if (sound.isPlaying) { 
+                        sound.stop(); 
+                    }
+                    sound.play();
                 });
             }
         }
@@ -84,6 +148,11 @@ function init() {
                 action.setLoop(THREE.LoopOnce);
                 action.clampWhenFinished = true;
                 action.play();
+
+                if (secondSound.isPlaying) {
+                    secondSound.stop();
+                }
+                secondSound.play();
             });
         } else {
             console.warn('No animations are available for the second model');
@@ -152,6 +221,13 @@ function animate() {
         }
     }
     renderer.render(scene, camera);
+
+    const time = clock.getElapsedTime();
+    const delta = Math.sin(time) * 5;
+    if (params.spot.moving) {
+        lights.spot.position.x = delta;
+        lights.spotHelper.update();
+    }
 }
 
 // Resize Box Display Function

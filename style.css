@@ -260,7 +260,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_text {
-        float: right;
+        float: middle;
         margin-top: 7%;
     }
 
