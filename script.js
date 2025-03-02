@@ -1,5 +1,6 @@
 // Global variables that can be controlled 
-var scene, camera, renderer, box, clock, mixer, action = [], mode;
+var scene, camera, renderer, box, clock, mixer, actions = [], mode, isWireframe = false;
+let loadedModel;
 
 // Initializing 
 init();
@@ -39,7 +40,7 @@ function init() {
     controls.target.set(1, 2, 0);
     controls.update();
 
-    // Plays an animation from an array of actions when a button is pressed
+    // Open Can Button
     mode = 'open';
     const btn = document.getElementById("btn");
     btn.addEventListener('click', function() {
@@ -54,12 +55,33 @@ function init() {
         }
     });
 
-    //GLTF Loader 
+    // Toggle Wireframe Button
+    const wireframeBtn = document.getElementById("toggleWireframe");
+    wireframeBtn.addEventListener('click', function() {
+        isWireframe = !isWireframe;
+        toggleWireframe(isWireframe);
+    });
+
+    // Rotate Can Button
+    const rotateBtn = document.getElementById("rotate");
+    rotateBtn.addEventListener('click', function() {
+        if (loadedModel) {
+            const axis = new THREE.Vector3(0, 1, 0);
+            const angle = Math.PI / 8;
+            loadedModel.rotateOnAxis(axis, angle);
+        } else {
+            console.warn('Model is not loaded yet');
+        }
+    });
+
+    //Load the GLTF model
     const loader = new THREE.GLTFLoader();
     loader.load(assetPath + 'assets/models/CocaCola Bottle.glb', function(gltf) {
         const model = gltf.scene;
         model.position.set(0, 0, 0); // Adjust position to ensure visibility
         scene.add(model);
+
+        loadedModel = model;
 
         mixer = new THREE.AnimationMixer(model);
         const animations = gltf.animations;
@@ -76,6 +98,16 @@ function init() {
     animate();
 }
 
+// Toggle Wireframe Function
+function toggleWireframe(enable) {
+    scene.traverse(function(object) {
+        if (object.isMesh) {
+            object.material.wireframe = enable;
+        }
+    });
+}
+
+// Animate Function
 function animate() {
     requestAnimationFrame(animate);
 
@@ -85,6 +117,7 @@ function animate() {
     renderer.render(scene, camera);
 }
 
+// Resize Box Display Function
 function resize() {
     const canvas = document.getElementById('threeContainer');
     const width = window.innerWidth;
