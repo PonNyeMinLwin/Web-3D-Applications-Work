@@ -7,8 +7,8 @@
 
 /* Method to declare your own fonts */
 @font-face {
-    font-family: cocaColaFont;
-    src: url(assets/fonts/lokicola.ttf);
+    font-family: monsterEnergyFont;
+    src: url(assets/fonts/green_Energy.ttf);
 }
 
 
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #main_3d_image {
-    background-image: url(assets/images/main_3D.jpg);
+    background-image: url(assets/images/main_banner.jpg);
     background-repeat: no-repeat;
     height: 201px;
 }
@@ -82,43 +82,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo h1 {
-    font-family: cocaColaFont; /* You don't need to repeat this for each media query as it is propagated */
-    font-size: 29px;
+    font-family: monsterEnergyFont;
+    font-size: 30px;
     margin: 0;
-    margin-top: -10px;
-    margin-bottom: -15px;
-    float: left;
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-right: 2px;
-    }
-
-.logo h2 {
-    font-family: cocaColaFont;
-    font-size: 31px;
-    margin-top: -6px;
-    margin-bottom: -15px;
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-right: 3px;
-    float: left;
-    }
-
-.logo h3 {
-    font-size: 18px;
     margin-top: 0px;
-    margin-bottom: -5px;
-    padding-top: 0px;
-    padding-left: 0px;
+    margin-bottom: -20px;
     float: left;
-    }
+    padding-top: 0px;
+    padding-left: 25px;
+    padding-right: 0px;
+}
 
 .logo p {
-    font-size: 7px;
-    margin-top: 23px;
+    font-family: 'monsterEnergyFont';
+    font-size: 20px;
+    margin-top: 0px;
     margin-bottom: 0px;
-    padding-top: 0px;
-    padding-left: 3px;
+    padding-top: 30px;
+    padding-left: 50px;
 }
 
 /* CSS rule to overwrite the navbar-default background and border color — again, helps to stop your site looking like a Bootstrap clone! 
@@ -254,7 +235,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_3d_image {
-        background-image: url(assets/images/main_3D_768.jpg);
+        background-image: url(assets/images/main_banner.jpg);
         background-repeat: no-repeat;
         height: 288px;
     }
@@ -270,6 +251,31 @@ There is plenty more styling to do than indicated here, in mobile it still defau
         margin-top: 10px;
         margin-bottom: 10px;
         background-color: rgb(202, 181, 181);
+    }
+
+    .logo {
+        margin-top: 3px;
+    }
+
+    .logo h1 {
+        font-family: monsterEnergyFont;
+        font-size: 40px;
+        margin: 0;
+        margin-top: 0px;
+        margin-bottom: -20px;
+        float: left;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .logo p {
+        font-family: 'monsterEnergyFont';
+        font-size: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 40px;
+        padding-left: 10px;
     }
 
     .navbar_coca_cola {
@@ -312,7 +318,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_3d_image {
-        background-image: url(assets/images/main_3D_970.jpg);
+        background-image: url(assets/images/main_banner.jpg);
         background-repeat: no-repeat;
         height: 363px;
     }
@@ -353,43 +359,24 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     .logo h1 {
-        font-family: cocaColaFont; /* You don't need to repeat this for each media query as it is propogated */
-        font-size: 41px;
+        font-family: monsterEnergyFont;
+        font-size: 59px;
         margin: 0;
         margin-top: 0px;
-        margin-bottom: -15px;
+        margin-bottom: -20px;
         float: left;
         padding-top: 0px;
-        padding-left: 0px;
-        padding-right: 2px;
+        padding-left: 10px;
+        padding-right: 0px;
     }
-
-    .logo h2 {
-        font-family: cocaColaFont;
-        font-size: 43px;
-        margin-top: 5px;
-        margin-bottom: -15px;
-        padding-top: 0px;
-        padding-left: 0px;
-        padding-right: 3px;
-        float: left;
-    }
-
-    .logo h3 {
-        font-size: 31px;
-        margin-top: 5px;
-        margin-bottom: 3px;
-        padding-top: 0px;
-        padding-left: 0px;
-        float: left;
-    }
-
+    
     .logo p {
-        font-size: 10px;
-        margin-top: 45px;
+        font-family: 'monsterEnergyFont';
+        font-size: 30px;
+        margin-top: 0px;
         margin-bottom: 0px;
-        padding-top: 0px;
-        padding-left: 8px;
+        padding-top: 55px;
+        padding-left: 80px;
     }
 
     .navbar_coca_cola {
@@ -430,7 +417,9 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_3d_image {
-        background-image: url(assets/images/main_3D_1400a.jpg);
+        background-image: url(assets/images/main_banner.jpg);
+        background-size: auto;
+        background-position: center;
         background-repeat: no-repeat;
         height: 500px;
     }
@@ -467,43 +456,24 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     .logo h1 {
-        font-family: cocaColaFont;
+        font-family: monsterEnergyFont;
         font-size: 59px;
         margin: 0;
         margin-top: 0px;
         margin-bottom: -20px;
         float: left;
         padding-top: 0px;
-        padding-left: 0px;
+        padding-left: 10px;
         padding-right: 0px;
     }
 
-    .logo h2 {
-        font-family: cocaColaFont;
-        font-size: 65px;
-        margin-top: 7px;
-        margin-bottom: -25px;
-        padding-top: 0px;
-        padding-left: 0px;
-        padding-right: 6px;
-        float: left;
-    }
-
-    .logo h3 {
-        font-size: 40px;
-        margin-top: 15px;
-        margin-bottom: -5px;
-        padding-top: 0px;
-        padding-left: 0px;
-        float: left;
-    }
-
     .logo p {
-        font-size: 14px;
+        font-family: 'monsterEnergyFont';
+        font-size: 30px;
         margin-top: 0px;
         margin-bottom: 0px;
-        padding-top: 65px;
-        padding-left: 12px;
+        padding-top: 55px;
+        padding-left: 80px;
     }
 
     .navbar_coca_cola {
