@@ -16,11 +16,11 @@ function init() {
 
     // Scene 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xa900);
+    scene.background = new THREE.Color(0xe1e130);
 
     // Camera
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(-125, 65, -10);
+    camera.position.set(-25, 58, 50);
 
     // Listener 
     const listener = new THREE.AudioListener();
@@ -188,16 +188,16 @@ function init() {
                 actions.push(action);
             });
 
-            if(modelPath === 'assets/models/crushed/crushed_original_monster_can.glb') {
+            if(modelPath === 'assets/models/crushed/crushed_the_doctor_monster_can.glb') {
                 secondModelMixer = mixer;
                 secondModelActions = actions;
             }
         });
     }
-    loadModel('assets/models/normal/original_monster_can.glb')
+    loadModel('assets/models/normal/the_doctor_monster_can.glb')
     const switchBtn = document.getElementById("switchModel");
     switchBtn.addEventListener('click', function() {
-        loadModel('assets/models/crushed/crushed_original_monster_can.glb');
+        loadModel('assets/models/crushed/crushed_the_doctor_monster_can.glb');
     });
 
     // Resize button event listener 

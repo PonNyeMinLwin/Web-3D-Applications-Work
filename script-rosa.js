@@ -16,7 +16,7 @@ function init() {
 
     // Scene 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xa900);
+    scene.background = new THREE.Color(0xe15be1);
 
     // Camera
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -188,16 +188,16 @@ function init() {
                 actions.push(action);
             });
 
-            if(modelPath === 'assets/models/crushed/crushed_original_monster_can.glb') {
+            if(modelPath === 'assets/models/crushed/crushed_ultra_rosa_monster_can.glb') {
                 secondModelMixer = mixer;
                 secondModelActions = actions;
             }
         });
     }
-    loadModel('assets/models/normal/original_monster_can.glb')
+    loadModel('assets/models/normal/ultra_rosa_monster_can.glb')
     const switchBtn = document.getElementById("switchModel");
     switchBtn.addEventListener('click', function() {
-        loadModel('assets/models/crushed/crushed_original_monster_can.glb');
+        loadModel('assets/models/crushed/crushed_ultra_rosa_monster_can.glb');
     });
 
     // Resize button event listener 
