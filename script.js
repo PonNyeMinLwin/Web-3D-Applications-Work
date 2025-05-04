@@ -16,11 +16,11 @@ function init() {
 
     // Scene 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x00aaff);
+    scene.background = new THREE.Color(0xa900);
 
     // Camera
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(-5, 25, 20);
+    camera.position.set(-125, 65, -10);
 
     // Listener 
     const listener = new THREE.AudioListener();
@@ -46,10 +46,12 @@ function init() {
     });
 
     // Ambient Light
-    const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+    const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 4);
     scene.add(ambient);
 
-    
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 4);
+    directionalLight.position.set(10, 70, 0);
+    scene.add(directionalLight);
 
     // Spot Light and Scene Lights GUI
     lights = {};
@@ -63,7 +65,7 @@ function init() {
     
     params = {
         spot: {
-            enable: false,
+            enable: true,
             color: 0xffffff,
             distance: 20,
             angle: Math.PI/2,
@@ -185,7 +187,7 @@ function init() {
                 actions.push(action);
             });
 
-            if(modelPath === 'assets/models/Recycled Cola Bottle.glb') {
+            if(modelPath === 'assets/models/crushed/crushed_original_monster_can.glb') {
                 secondModelMixer = mixer;
                 secondModelActions = actions;
             }
@@ -194,7 +196,7 @@ function init() {
     loadModel('assets/models/normal/original_monster_can.glb')
     const switchBtn = document.getElementById("switchModel");
     switchBtn.addEventListener('click', function() {
-        loadModel('assets/models/Recycled Cola Bottle.glb');
+        loadModel('assets/models/crushed/crushed_original_monster_can.glb');
     });
 
     // Resize button event listener 
