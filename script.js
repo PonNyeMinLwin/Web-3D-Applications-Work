@@ -49,6 +49,8 @@ function init() {
     const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
     scene.add(ambient);
 
+    
+
     // Spot Light and Scene Lights GUI
     lights = {};
     lights.spot = new THREE.SpotLight();
@@ -189,7 +191,7 @@ function init() {
             }
         });
     }
-    loadModel('assets/models/CocaCola Bottle.glb')
+    loadModel('assets/models/normal/original_monster_can.glb')
     const switchBtn = document.getElementById("switchModel");
     switchBtn.addEventListener('click', function() {
         loadModel('assets/models/Recycled Cola Bottle.glb');

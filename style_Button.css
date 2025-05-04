@@ -25,7 +25,7 @@ body {
 
 #gui-container {
     position: absolute;
-    top: 120px;
-    left: 10px;
+    bottom: 25px;
+    right: 10px;
     z-index: 1000;
 }

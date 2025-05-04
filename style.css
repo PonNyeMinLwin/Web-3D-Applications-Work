@@ -428,6 +428,7 @@ There is plenty more styling to do than indicated here, in mobile it still defau
         float: left;
         margin-top: 30%;
         margin-left: 10px;
+        margin-bottom: 10px;
     }
 
     #main_text h2 {
