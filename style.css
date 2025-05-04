@@ -241,8 +241,8 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_text {
-        float: middle;
-        margin-top: 7%;
+        float: left;
+        margin-top: 50%;
     }
 
     .card {
@@ -332,8 +332,8 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_text {
-        float: right;
-        margin-top: 7%;
+        float: left;
+        margin-top: 40%;
     }
 
     #main_text h2 {
@@ -425,8 +425,9 @@ There is plenty more styling to do than indicated here, in mobile it still defau
     }
 
     #main_text {
-        float: right;
-        margin-top: 20%;
+        float: left;
+        margin-top: 30%;
+        margin-left: 10px;
     }
 
     #main_text h2 {
