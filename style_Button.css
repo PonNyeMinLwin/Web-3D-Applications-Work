@@ -10,10 +10,41 @@ body {
     margin: 0;
 }
 
+
 #btn {
-    background: #fea;
-    padding: 15px;
-    font-family: arial;
+    font-size: 18px;
+    padding: 3px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    background: #fff;
+    color: #c962e2;
+    margin-top: 5px;
+}
+
+#btn:hover {
+    border-radius: 20px;
+    background: #c962e2;
+    color: #fff;
+    transition: 0.3s all;
+}
+
+.display-btn {
+    font-size: 18px;
+    padding: 3px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    background: #fff;
+    color: #c962e2;
+    margin-top: 5px;
+}
+
+.display-btn:hover {
+    border-radius: 20px;
+    background: #c962e2;
+    color: #fff;
+    transition: 0.3s all;
 }
 
 #threeContainer {
