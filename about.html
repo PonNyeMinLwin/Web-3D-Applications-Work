@@ -62,9 +62,122 @@
 
     <br>
 
-    <h2>About</h2>
-    For this website,
+    <div style="padding: 10px 60px 10px 10px;">
+      
+      <h2>About</h2>
+      For the final project of my Web 3D Applications course, I developed a webpage that showcases three different Monster Energy drink flavors: Original, Ultra Rosá, and The Doctor.
+      The concepts, model design, and branding rights of these drinks and models are intellectual properties of the Monster Beverage Corporation and are not intended for commercial use.
+      The webpage is purely for educational purposes and is not affiliated with Monster Energy in any way.
+      All the description and information provided in this webpage are from the offcial Monster Energy website and other sources available on the internet.
+      <br> <br> 
+      The website's main feature involves displaying an interactive 3D virtual example of three different Monster Energy drinks, each with its own unique flavor and design. 
+      Each modelled can contains animations and sound effects that can be triggered by the user. Overall, this website will emphasise on usability, interactivity, and user experience, allowing users to explore the different flavors of Monster Energy drinks in a fun and engaging way.
+      
+      <div class="mt-4"></div>
 
+      <h2>3D Models</h2>
+      All three Monster Energy drink can models were designed using Blender. The models were constructed to be as realistic as possible and are life-size (full-scale) 500ml can models.
+      The three models were textured with the appropriate labels and designs for each flavor, including the Monster Energy logo, the ingredient label, and other branding elements.
+      In total, six Blender files were utilised in the project: og_can, rosa_can, doctor_can, crushed_og_can, crushed_rosa_can, and crushed_doctor_can.
+      <br> <br>
+      The models were designed to be fully interactable, allowing users to rotate, zoom in and out, and view the models from different angles.
+      Additionally, each model have two animations attached: "Open Can" and "Recycle Can" that can be triggered by the user. 
+      The models were also paired with the necessary sound effects that gets activated when a specific animation plays. 
+      Three.js was used to render the models in the browser to provide a smooth and responsive experience for users so the models were exported in a format compatible with three.js. 
+      
+      <div class="mt-4"></div>
+
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-6" style="padding-bottom: 50px; padding-top: 20px;"><img src="assets/images/monster_about.png" alt="" class="img-fluid" id="image1"></div>
+          <div class="col-6" style="padding-bottom: 50px; padding-top: 20px;"><img src="assets/images/wireframe_about.png" alt="" class="img-fluid" id="image2"></div>
+          <div class="col-6" style="padding-bottom: 20px;"><img src="assets/images/rosa_about.png" alt="" class="img-fluid" id="image3"></div>
+          <div class="col-6" style="padding-bottom: 20px;"><img src="assets/images/doctor_about.png" alt="" class="img-fluid" id="image4"></div>
+        </div>
+      </div>
+
+      <div class="mt-4"></div>
+
+      <h2>Webpage Design</h2>
+      The webpage was designed to be user-friendly with a modern minimalistic layout. 
+      The design incorporates a combination of HTML, CSS, and JavaScript to add in buttons, images, and fonts to create a visually appealing experience for users.
+      Bootstrap 5 was incorporated to include navigation bars, card layouts, and responsive design elements.
+      The framework is also used to make the website fully responsive and usable accross various devices, including desktops, tablets, and mobile phones (where the mobile version have a unique layout).
+      The font used in the title of the webpage is a .ttf font file from freefontsfamily.org. 
+
+      <div class="mt-4"></div>
+
+      <h2>Integration</h2>
+      Built using Three.js, the 3D model viewer loads and displays the normal and crushed .glb models of the Monster Energy drinks. 
+      The canvas element is used to allow user interaction of the model using left, right, and middle mouse buttons.
+      In addition, Three.js was used to initialise the scene (background), camera (POV), and WebGL renderer (canvas) to display the models.
+      Lighting and shadows were added using ambient, directional, and spot lights to enhance the depth of the model. 
+      The spot light was additionally used with dat.GUI to allow users to toggle, manipulate the colour or distance, and adjust the intensity of the light source.
+      Furthermore, a "light tracker" and "moving light" options were added to allow more user interactin with the models, lighting-wise. 
+      <br> <br>
+      In order to integrate and fully sync the sound effects with the animations, Adobe Audtion was utilised. The page and image layout was inspired by the official Monster Energy website. 
+      The images in the index webpage were edited using Canva and assistive templates to display a life-size 500ml replica of the can with a background that fits the 'Monster Energy' theme.  
+
+      <div class="mt-4"></div>
+
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-6" style="padding-bottom: 50px; padding-top: 20px;"><img src="assets/images/adobe_audition.png" alt="" class="img-fluid" id="image5"></div>
+          <div class="col-6" style="padding-bottom: 50px; padding-top: 20px;"><img src="assets/images/monster_example_2.png" alt="" class="img-fluid" id="image6"></div>
+        </div>
+      </div>
+
+      <div class="mt-4"></div>
+
+      <h2>Interaction</h2>
+      OrbitControls were used to allow users to rotate, zoom in and out, and pan the models.
+      The webpage also includes five interactive CSS-styled buttons that allow users to open the can, toggle wireframe mode, rotate the can, 
+      switch can models (between normal and crushed), and play the recycle can animation with sound effects. 
+      AnimationMixers supports multiple animation clips and prevents users from for example, playing the crushing animation when the can is already crushed or still unopened.
+
+      <div class="mt-4"></div>
+
+      <h2>Implemenation & Testing</h2>
+      Due to the unprecedented delay in the production of my prototype Monster Energy Website, I was unable to undergo detailed and official user testing sessions during Week 11. 
+      However, I was able to consistently conduct rigorous unit (personal) testing and debugging of the webpage throughout and after the implementation process. 
+      Additionally, I recruited two users with varying proficiency in website development and information technology, in an effort to gain differing yet useful insights and user feedback through informal testing sessions.
+      <br> <br>
+      Most of my unit testing was managed using the Chrome Developer Tools, which allowed me to simultaeneously inspect the webpage and identify issues in the design or bugs in the code. 
+      These unit testing sessions primarly consist of usability, functional and visual (UI layout) tests where I identify broken links or missing texts and images, especially when the browser is resized.
+      <br> <br>
+      After developing my can models, I tested how my model would look in the browser display using Three.js editor website. 
+      From there, I tested with multiple lighting and camera settings to ensure the model is correctly and brightly displayed. 
+      During this model "transfer" process, I started informal usability testing with the two testing volunteers. 
+      I held user interviews in an attempt to gain feedback on the visual appeal and usability of my 3D model viewer. 
+      Examples of some interview questions include: How do the can models look in this lighting? Does the Ultra Rosá can look better in the blue or the pink background? How are the orbital controls - do you find it easy to use?
+      The feedback I received from the two volunteers was used to make some major changes to the display box and lighting settings. 
+      <br> <br>
+      After the implementation process, I conducted system-wide unit testing and cross-browser testing.
+
+      <div class="mt-4"></div>
+
+      <h2>Deeper Understanding</h2>
+      Before my third year of university, I had little to no experience with 3D modelling (in Blender) or web development in general. I had only used HTML to create simple webpages before (without even CSS or JavaScript). 
+      For this reason, I opted to follow the module's lab tutorials closely and use the provided HTML and CSS templates, while adding some personal touches to the design where appropriate.
+      I also used the Three.js documentation and examples to learn how to implement the 3D model viewer and properly queue the animations.  
+      However, I have made several significant modifications and I have added extensive comments to improve the readability and prove my understanding of the code.
+      <br> <br>
+      1. Although the current Monster models the Cola model from the lab tutorial were both similar-looking cans, my Original, Ultra Rosá, and The Doctor models were designed from scratch and with a bigger emphasis on realism.
+      I attempted to make the model a perfect "one-to-one scale" of the actual 500ml Monster product as possible. I added multiple bevels and smoothed curved edges to the top and bottom of the can to make it have a bumpy, uneven texture.
+      <br> <br>
+      2. I have added some button styling to the 5 model-interacting buttons to make them have a hover effect. 
+      <br> <br>
+      On a personal note, by following the lab tutorials and developing this project, I am extremely confident and proud of my newfound knowledge and skills in web development and 3D modelling.
+      This module helped me complete my web development projects from other modules, especially my Individual Final Year Project. 
+
+      <div class="mt-4"></div>
+
+      <h2>Publication</h2>
+      I have created an about page that includes more information regarding the development of this project and website. 
+      I have checked all the content in folder and if it can be compressed (zipped). I have tested that my folder can be opened in Visual Studio Code when unzipped and works normally. 
+      I have also pushed and comitted my final changes to my Github repository and have provided the repository link. 
+    </div>
+  
     <br>
 
     <!-- Footer Navigation Bar -->
@@ -81,5 +194,14 @@
         </div>
       </div>
     </nav>
+
+    <script>
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', function() {
+          this.classList.toggle('clicked');
+        });
+      });
+    </script>
+
   </body>
 </html> 
